@@ -24,3 +24,11 @@ nicoleZ, huiW, juliaL, nicholasT -- 2023-05-02 22:14
 * Submodule linked
 * Worked on and finished the design doc
 ==============================================================
+
+nicoleZ -- 2023-05-03 23:30
+--------------------------------------------------------------
+* Suggestions on our design doc:
+    Too many APIs/databases (maybe we can shorten a bit)
+    Need to label the APIs
+    Maybe we can add more features so that the user can interact more
+==============================================================
