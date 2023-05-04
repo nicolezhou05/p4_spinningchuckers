@@ -3,9 +3,8 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def hello_world():
-    print(__name__)
-    return "No hablo queso!"
+def root():
+    return render_template('home.html')
 
 
 if __name__ == "__main__":
