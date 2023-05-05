@@ -2,6 +2,10 @@
 .navbar {
     background-color: #333;
     overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
 }
 
 /* Style the links inside the navbar */
