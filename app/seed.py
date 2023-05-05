@@ -1,6 +1,6 @@
 import sqlite3
-database_file = "nycInfo"
-connection = sqlite3.conect(database_file, check_same_thread=False)
+database_file = "nycInfo.db"
+connection = sqlite3.connect(database_file, check_same_thread=False)
 
 #create transportation table
 connection.execute("CREATE TABLE IF NOT EXISTS" +
@@ -18,6 +18,12 @@ connection.execute("CREATE TABLE IF NOT EXISTS" +
                 "cong_dist INTEGER, " +
                 "type TEXT, " +
                 "owner TEXT, " +
+                "FEMAFldz TEXT, " +
+                "FEMAFldT TEXT, " +
+                "HrcEvac INTEGER, " +
+                "latitude REAL, " +
+                "longitude REAL, " +
+                "the_geom TEXT"
                 ")")
 print("transportation table created")
 connection.commit()
