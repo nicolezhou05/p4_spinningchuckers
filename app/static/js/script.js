@@ -1,3 +1,4 @@
+// NAVBAR
 // Get the navbar
 var navbar = document.querySelector('.navbar');
 
