@@ -33,12 +33,15 @@ def create(cursor, data):
     TEXT_indeces = [1, 2, 3, 4, 11, 12, 13, 14, 18]
     for r in range(len(data)):
         for c in range(len(data[r])):
-            if c in TEXT_indeces:
+            if len(data[r][c]) < 1:
+                query += "NULL" + ", "
+            elif c in TEXT_indeces:
                 query += "'" + data[r][c] + "',"
             else:
                 query += data[r][c] + ", "
         print("This is row " + str(r))
-    query += ")"
+    query = query[0:len(query)-3]
+    query += ");"
     print(query)
     cursor.execute(query)
     cursor.connection.commit()
