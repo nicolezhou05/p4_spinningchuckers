@@ -26,7 +26,7 @@ for (var i = 0; i < links.length; i++) {
       if (current.id == `${this.innerHTML.toLowerCase()}` && current.classList.contains('hidden')) {
         current.classList.remove('hidden');
       }
-      else {
+      else if (current.id != `${this.innerHTML.toLowerCase()}`) {
         current.classList.add('hidden');
       }
     }
