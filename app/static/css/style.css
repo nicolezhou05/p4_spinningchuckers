@@ -23,3 +23,11 @@
     background-color: #ddd;
     color: black;
 }
+
+#main {
+    margin-top: 10vh;
+}
+
+.hidden {
+    display: none;
+}
