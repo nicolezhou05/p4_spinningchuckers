@@ -42,3 +42,7 @@ nicoleZ, huiW, juliaL, nicholasT -- 2023-05-08
 * Working on login and register page
 * Working on transportation api
 ==============================================================
+juliaL -- 2023-05-09
+--------------------------------------------------------------
+* Creation of tables working
+* Database population working for transportation table
