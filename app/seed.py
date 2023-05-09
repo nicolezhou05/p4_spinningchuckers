@@ -29,19 +29,19 @@ print("transportation table created")
 connection.commit()
 
 def create(cursor, data):
-    query = "INSERT INTO transportation (VMS, main_roadway, direction, cross_street, borough, barcode, borocd, coun_dist, assem_dist, st_sen_dist, cong_dist, type, owner, FEMAFldz, FEMAFldT, HrcEvac, latitude, longitude, the_geom) VALUES ("
+    query = "INSERT INTO transportation (VMS, main_roadway, direction, cross_street, borough, barcode, borocd, coun_dist, assem_dist, st_sen_dist, cong_dist, type, owner, FEMAFldz, FEMAFldT, HrcEvac, latitude, longitude, the_geom) VALUES "
     TEXT_indeces = [1, 2, 3, 4, 11, 12, 13, 14, 18]
-    for r in range(len(data)):
+    for r in range(len(data)-1):
+        query += "("
         for c in range(len(data[r])):
             if len(data[r][c]) < 1:
                 query += "NULL" + ", "
             elif c in TEXT_indeces:
-                query += "'" + data[r][c] + "',"
+                query += "'" + data[r][c] + "', "
             else:
                 query += data[r][c] + ", "
-        print("This is row " + str(r))
-    query = query[0:len(query)-3]
-    query += ");"
+        query = query[0:len(query)-2] + "),"
+    query = query[0:len(query)-2] + ");"
     print(query)
     cursor.execute(query)
     cursor.connection.commit()
