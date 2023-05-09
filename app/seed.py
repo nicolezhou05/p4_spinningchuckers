@@ -52,3 +52,19 @@ with open("Overhead_Electronic_Signs.csv", "r") as file:
         dataList[r] = dataList[r].split(",")
 
     create(cursor=connection.cursor(), data=dataList[1:])
+
+#create crime table
+connection.execute("CREATE TABLE IF NOT EXISTS" +
+                " crime (" +
+                "Date TEXT, " +
+                "Title TEXT, " +
+                "Organization TEXT, " +
+                "cross_street TEXT, " +
+                "City TEXT, " +
+                "State TEXT, " +
+                "URL TEXT, " +
+                "Keyword TEXT, " +
+                "Summary TEXT" +
+                ")")
+print("crime table created")
+connection.commit()
