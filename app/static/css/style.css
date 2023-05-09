@@ -1,5 +1,5 @@
 body {
-    background-image: url()
+    background-image: url("/app/static/images/nyc.jpg");
 }
 
 .navbar {
@@ -9,6 +9,7 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
+    opacity: 70%;
 }
 
 .navbar a {
