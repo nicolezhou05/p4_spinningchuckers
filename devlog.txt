@@ -32,3 +32,10 @@ nicoleZ -- 2023-05-03 23:30
     Need to label the APIs
     Maybe we can add more features so that the user can interact more
 ==============================================================
+
+nicoleZ, huiW, juliaL, nicholasT -- 2023-05-08
+--------------------------------------------------------------
+* Nav bar done
+* Working on login and register page
+* Working on transportation api
+==============================================================
