@@ -13,15 +13,15 @@ Welcome to New York! Whether you be a fellow New Yorker hoping to roam the stree
 #### How to clone/install
 1. Open up terminal.
 2. Enter ```python3 -m venv <name of your choice>``` at the place you want to install your virtual environment.
-3. ```cd <name of your choice>```
-4. ```. bin/activate``` and you should be in the virtual environment you just created!
-5. ```pip install flask```
+3. Enter ```cd <name of your choice>```
+4. Enter ```. bin/activate``` and you should be in the virtual environment you just created!
+5. Enter ```pip install flask```
 6. Go to where you want to clone the project repo.
-7. Enter ```git clone git@github.com:nicolezhou05/p4_spinningchuckers.git"
+7. Enter ```git clone git@github.com:nicolezhou05/p4_spinningchuckers.git```
 #### How to run
 1. Get in your virtual environment.
 2. Locate the cloned project repo.
-3. ```cd p4_spinningchuckers/app/```
+3. Enter ```cd p4_spinningchuckers/app/```
 4. Run ```python3 __init.py__```
 5. Open the link in your browser.
 
