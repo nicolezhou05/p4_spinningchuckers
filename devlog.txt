@@ -35,3 +35,10 @@ nicoleZ -- 2023-05-03 23:30
 juliaL -- 2023-05-04
 --------------------------------------------------------------
 * Began working on initiating the creation of the sqlite table.
+==============================================================
+nicoleZ, huiW, juliaL, nicholasT -- 2023-05-08
+--------------------------------------------------------------
+* Nav bar done
+* Working on login and register page
+* Working on transportation api
+==============================================================
