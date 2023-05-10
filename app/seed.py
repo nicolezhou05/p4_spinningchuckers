@@ -93,7 +93,6 @@ with open("US_Crime_Data.csv", "r") as file:
 
     create_crime(cursor=connection.cursor(), data=dataList[1:])
 
-#create buildings table
 # #create buildings table
 connection.execute("CREATE TABLE IF NOT EXISTS" +
                 " buildings (" +
@@ -102,6 +101,47 @@ connection.execute("CREATE TABLE IF NOT EXISTS" +
                 "SchoolDist INTEGER, " +
                 "Council INTEGER, " +
                 "ZipCode INTEGER, " +
+                "FireComp TEXT, " +
+                "PolicePrct INTEGER, " +
+                "HealthArea INTEGER" +
+                "Address TEXT" +
+                "LandUse INTEGER"+
+                ")")
+print("buildings table created")
+connection.commit()
+def create_buildings(cursor, data):
+    query = "INSERT INTO buildings (Block, Lot, SchoolDist, Council, ZipCode, FireComp, PolicePrct, HealthArea, Address, LandUse) VALUES "
+    TEXT_indices = [2,3,7,8,9,10,11,12,16,29]
+    for r in range(len(data)-1):
+        query += "("
+        for c in range(len(data[r])):
+            if len(data[r][c]) < 1:
+                query += "NULL" + ", "
+            elif c in TEXT_indices:
+                query += "'" + data[r][c] + "', "
+            else:
+                query += data[r][c] + ", "
+        query = query[:len(query)-2] + "),"
+    query = query[:len(query)-2] + ");"
+    print(query)
+    cursor.execute(query)
+    cursor.connection.commit()
+"""
+will download csv
+with open("US_Crime_Data.csv", "r") as file:
+    dataList = file.read().split("\n")
+    for r in range(len(dataList)):
+        dataList[r] = dataList[r].split(",")
+
+    create_crime(cursor=connection.cursor(), data=dataList[1:])
+"""
+# #create disasters table
+connection.execute("CREATE TABLE IF NOT EXISTS" +
+                " disasters (" +
+                "Dis_No TEXT, " +
+                "Year INTEGER, " +
+                "Disaster_Subgroup TEXT, " +
+                "Disaster_Type TEXT, " +
                 "FireComp TEXT, " +
                 "PolicePrct INTEGER, " +
                 "HealthArea INTEGER" +
