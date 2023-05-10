@@ -52,5 +52,14 @@ juliaL, nicoleZ, huiW -- 2023-05-09
 * Database population working for transportation table
 * Readme updated
 * Looked at how to incorporate map
-* DATA CONDUIT: download the csv file and use python file to read the csv file and create the sqlite table
+* DATA CONDUIT:
+    - download the csv file
+    - Use a python file to read the csv file and create the sqlite table
+    - Display the data onto the website
+    - When the user click on certain parts of the map, data are shown/hidden (filter based on longitude and latitude)
+==============================================================
+
+nicoleZ, huiW, juliaL, nicholasT -- 2023-05-10
+--------------------------------------------------------------
+* Crime database done
 ==============================================================
