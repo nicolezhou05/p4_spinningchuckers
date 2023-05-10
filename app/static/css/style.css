@@ -1,8 +1,8 @@
 body {
-    background: url("/app/static/images/nyc.jpg");
+    background-image: url("../images/nyc.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; 
 }
 
 .navbar {
@@ -12,7 +12,6 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    opacity: 70%;
 }
 
 .navbar a {
@@ -32,18 +31,20 @@ body {
 #main {
     display: flex;
     margin-top: 6vh;
-    opacity: 0.8;
 }
 
 #tabbar {
     padding: 1%;
-    border: solid;
     width: 50vw;
     margin-left: 0.5vw;
+    background-color: white;
+    opacity: 0.7;
 }
 
 .tab {
     overflow-y: auto;
+    height: 835px;
+    width: auto;
 }
 
 .hidden {
