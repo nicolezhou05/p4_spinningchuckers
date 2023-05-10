@@ -43,6 +43,7 @@ nicoleZ, huiW, juliaL, nicholasT -- 2023-05-08
 * Nav bar done
 * Working on login and register page
 * Working on transportation api
+* Created starter for crime and building batabase
 ==============================================================
 
 juliaL, nicoleZ, huiW -- 2023-05-09
