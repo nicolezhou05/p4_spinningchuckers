@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>SIGNUP</title>
+  </head>
+
+  <body>
+    <h1>Register</h1>
+
+    <h3>To register, enter your desired username and password.</h3>
+    <form action="/register" method="POST">
+      User: <input type="text" name="register_username">
+      <br>
+      Password: <input type="password" name="register_pswd">
+      <br>
+      Confirm Password: <input type="password" name="pswd_confirm">
+      <input type="submit" name="register_submit" id="register_button">
+    </form>
+    <h3>
+    <br>
+
+    <h4>Already have an account?</h4>
+    <form action="/" method="GET">
+      <button type="submit">Login</button>
+    </form>
+  </body>
+
+</html>

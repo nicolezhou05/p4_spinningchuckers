@@ -32,17 +32,23 @@ nicoleZ -- 2023-05-03 23:30
     Need to label the APIs
     Maybe we can add more features so that the user can interact more
 ==============================================================
+
 juliaL -- 2023-05-04
 --------------------------------------------------------------
 * Began working on initiating the creation of the sqlite table.
 ==============================================================
+
 nicoleZ, huiW, juliaL, nicholasT -- 2023-05-08
 --------------------------------------------------------------
 * Nav bar done
 * Working on login and register page
 * Working on transportation api
 ==============================================================
-juliaL -- 2023-05-09
+
+juliaL, nicoleZ, huiW -- 2023-05-09
 --------------------------------------------------------------
 * Creation of tables working
 * Database population working for transportation table
+* Readme updated
+* Looked at how to incorporate map
+==============================================================
