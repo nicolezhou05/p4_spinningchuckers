@@ -51,4 +51,5 @@ juliaL, nicoleZ, huiW -- 2023-05-09
 * Database population working for transportation table
 * Readme updated
 * Looked at how to incorporate map
+* DATA CONDUIT: download the csv file and use python file to read the csv file and create the sqlite table
 ==============================================================
