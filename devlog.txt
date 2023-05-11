@@ -62,4 +62,5 @@ juliaL, nicoleZ, huiW -- 2023-05-09
 nicoleZ, huiW, juliaL, nicholasT -- 2023-05-10
 --------------------------------------------------------------
 * Crime database done
+* Worked on website design
 ==============================================================
