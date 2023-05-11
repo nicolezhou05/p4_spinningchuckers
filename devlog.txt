@@ -65,3 +65,9 @@ nicoleZ, huiW, juliaL, nicholasT -- 2023-05-10
 * Created skeleton for buildings and disasters
 * Worked on website design
 ==============================================================
+
+nicoleZ, huiW, nicholasT -- 2023-05-10
+--------------------------------------------------------------
+* Energy database done
+* More on the map
+==============================================================
