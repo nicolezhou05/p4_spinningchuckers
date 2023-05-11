@@ -135,6 +135,8 @@ with open("US_Crime_Data.csv", "r") as file:
 
     create_crime(cursor=connection.cursor(), data=dataList[1:])
 """
+"""
+prob a bad idea
 # #create disasters table
 connection.execute("CREATE TABLE IF NOT EXISTS" +
                 " disasters (" +
@@ -142,7 +144,7 @@ connection.execute("CREATE TABLE IF NOT EXISTS" +
                 "Year INTEGER, " +
                 "Disaster_Subgroup TEXT, " +
                 "Disaster_Type TEXT, " +
-                "FireComp TEXT, " +
+                "Disaster_Subtype TEXT, " +
                 "PolicePrct INTEGER, " +
                 "HealthArea INTEGER" +
                 "Address TEXT" +
@@ -167,12 +169,56 @@ def create_buildings(cursor, data):
     print(query)
     cursor.execute(query)
     cursor.connection.commit()
-"""
-will download csv
+
+#will download csv
 with open("US_Crime_Data.csv", "r") as file:
     dataList = file.read().split("\n")
     for r in range(len(dataList)):
         dataList[r] = dataList[r].split(",")
 
     create_crime(cursor=connection.cursor(), data=dataList[1:])
+
 """
+
+
+
+
+#create crime table
+connection.execute("CREATE TABLE IF NOT EXISTS" +
+                " crime (" +
+                "Date TEXT, " +
+                "Title TEXT, " +
+                "Organization TEXT, " +
+                "cross_street TEXT, " +
+                "City TEXT, " +
+                "State TEXT, " +
+                "URL TEXT, " +
+                "Keyword TEXT, " +
+                "Summary TEXT" +
+                ")")
+print("crime table created")
+connection.commit()
+def create_crime(cursor, data):
+    query = "INSERT INTO crime (Date, Title, Organization, cross_street, City, State, URL, Keyword, Summary) VALUES "
+    TEXT_indices = list(range(1,9))
+    for r in range(len(data)-1):
+        query += "("
+        for c in range(len(data[r])):
+            if len(data[r][c]) < 1:
+                query += "NULL" + ", "
+            elif c in TEXT_indices:
+                query += "'" + data[r][c] + "', "
+            else:
+                query += data[r][c] + ", "
+        query = query[:len(query)-2] + "),"
+    query = query[:len(query)-2] + ");"
+    print(query)
+    cursor.execute(query)
+    cursor.connection.commit()
+
+with open("US_Crime_Data.csv", "r") as file:
+    dataList = file.read().split("\n")
+    for r in range(len(dataList)):
+        dataList[r] = dataList[r].split(",")
+
+    create_crime(cursor=connection.cursor(), data=dataList[1:])
