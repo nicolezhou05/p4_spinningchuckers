@@ -71,3 +71,11 @@ nicoleZ, huiW, nicholasT -- 2023-05-10
 * Energy database done
 * More on the map
 ==============================================================
+
+nicoleZ, huiW, nicholasT -- 2023-05-10
+--------------------------------------------------------------
+* Health and temperature databases done
+* Start to think of another solution for maps
+* Started droplet portion
+* Login and register almost finalized
+==============================================================
