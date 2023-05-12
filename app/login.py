@@ -48,7 +48,7 @@ def get_pswd(username):
                 return i[1]
     return False
 
-# makes sure that the password entered on the login page is correct
-def correct_login(password):
-    # work in progress
-    return False
+# makes sure that the info entered on the login page is correct
+# returns True if the entered username and password are correct
+def correct_login(username, password):
+    return get_pswd(username) == password

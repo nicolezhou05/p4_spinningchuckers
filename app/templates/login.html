@@ -19,6 +19,12 @@
             <input type="submit" name="logged">
         </form>
 
+        <h3>
+          {% if message %}
+            {{message}}
+          {% endif %}
+        </h3>
+
         <h4>Don't have an account?</h4>
         <form action="/register" method="GET">
           <button type="submit">Register</button>
