@@ -2,22 +2,25 @@ import sqlite3
 import csv
 database_file = "nycInfo.db"
 connection = sqlite3.connect(database_file, check_same_thread=False)
-#create energy table
+#create temperature table
 connection.execute("CREATE TABLE IF NOT EXISTS" +
-                " energy (" +
-                "Property_ID INTEGER, " +
-                "Property_Name TEXT, " +
-                "Parent_Property_ID TEXT, " +
-                "Parent_Property_Name TEXT, " +
-                "Month TEXT, " +
-                "Electricity_Use TEXT, " +
-                "Natural_Gas_Use TEXT" +
+                " temperature (" +
+                "Sensor.ID TEXT, " +
+                "AirTemp INTEGER, " +
+                "Day TEXT, " +
+                "Hour INTEGER, " +
+                "Latitude FLOAT, " +
+                "Longitude FLOAT, " +
+                "Year TEXT, " +
+                "Install.Type TEXT, " +
+                "Borough TEXT, " +
+                "ntacode TEXT" +
                 ")")
-print("energy table created")
+print("temperature table created")
 connection.commit()
-def create_energy(cursor, data):
-    query = "INSERT INTO energy (Property_ID, Property_Name, Parent_Property_ID, Parent_Property_Name, Month, Electricity_Use, Natural_Gas_Use) VALUES "
-    TEXT_indices = list(range(1,8))
+def create_temperature(cursor, data):
+    query = "INSERT INTO temperature (Sensor.ID, AirTemp, Day, Hour, Latitude, Longitude, Year, Install.Type, Borough, ntacode) VALUES "
+    TEXT_indices = list(range(1,11))
     for r in range(len(data)-1):
         query += "("
         for c in range(len(data[r])):
@@ -34,9 +37,9 @@ def create_energy(cursor, data):
     cursor.connection.commit()
 
 
-with open("Local_Law_84_2021__Monthly_Data_for_Calendar_Year_2020_.csv", "r") as file:
+with open("Hyperlocal_Temperature_Monitoring.csv", "r") as file:
     dataList = file.read().split("\n")
     for r in range(len(dataList)):
         dataList[r] = dataList[r].split(",")
 
-    create_energy(cursor=connection.cursor(), data=dataList[1:])
+    create_temperature(cursor=connection.cursor(), data=dataList[1:])
