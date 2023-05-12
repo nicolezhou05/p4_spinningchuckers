@@ -31,6 +31,7 @@ body {
 #main {
     display: flex;
     margin-top: 6vh;
+    align-items: center;
 }
 
 #tabbar {
@@ -39,11 +40,12 @@ body {
     margin-left: 0.5vw;
     background-color: white;
     opacity: 0.7;
+    height: 89vh;
 }
 
 .tab {
     overflow-y: auto;
-    height: 835px;
+    height: 100%;
     width: auto;
 }
 
