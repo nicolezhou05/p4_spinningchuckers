@@ -4,7 +4,7 @@ connection = sqlite3.connect(database_file, check_same_thread=False)
 
 #create health table
 connection.execute("CREATE TABLE IF NOT EXISTS" +
-                " transportation (" +
+                " health (" +
                 "facility_type TEXT, " +
                 "borough TEXT, " +
                 "facility_name TEXT, " +

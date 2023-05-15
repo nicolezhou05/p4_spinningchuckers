@@ -32,3 +32,10 @@ for (var i = 0; i < links.length; i++) {
     }
   });
 }
+
+var location;
+var map = new google.maps.Map(document.getElementById("map"));
+map.addListener("click", (mapsMouseEvent) => {
+  location = JSON.stringify(mapsMouseEvent.latLng.toJSON(), null,  2);
+});
+console.log(location);
