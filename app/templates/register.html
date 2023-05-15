@@ -17,7 +17,12 @@
       Confirm Password: <input type="password" name="pswd_confirm">
       <input type="submit" name="register_submit">
     </form>
+    
     <h3>
+      {% if message %}
+        {{message}}
+      {% endif %}
+    </h3>
     <br>
 
     <h4>Already have an account?</h4>
