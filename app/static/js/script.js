@@ -35,18 +35,31 @@ for (var i = 0; i < links.length; i++) {
 
 // OpenStreetMap
 // Initialize the map
-function initMap() {
-  var map = L.map('map').setView([40.7142, -74], 13);
+var map = L.map('map').setView([40.7142, -74], 14);
 
-  // Add the OpenStreetMap tile layer
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data © OpenStreetMap contributors',
-    maxZoom: 20,
-    minZoom: 12
-  }).addTo(map);
+// Add the OpenStreetMap tile layer
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: 'Map data © OpenStreetMap contributors',
+  maxZoom: 20,
+  minZoom: 12
+}).addTo(map);
+
+markers = [];
+
+function onMapClick(e) {
+  const { lat, lng } = e.latlng;
+  clearMarkers();
+  addMarker(lat, lng);
 }
 
-// Call the initMap function when the page has loaded
-window.onload = function() {
-  initMap();
-};
+function addMarker(lat, lng) {
+  const marker = L.marker([lat, lng]).addTo(map);
+  markers.push(marker);
+}
+
+function clearMarkers() {
+  markers.forEach(marker => marker.remove());
+  markers = [];
+}
+
+map.on('click', onMapClick);
