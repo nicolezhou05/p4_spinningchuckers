@@ -34,6 +34,11 @@ body {
     align-items: center;
 }
 
+#map {
+    height: 93vh;
+    width: 100%;
+}
+
 #tabbar {
     padding: 1%;
     width: 50vw;

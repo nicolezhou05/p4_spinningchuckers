@@ -33,9 +33,20 @@ for (var i = 0; i < links.length; i++) {
   });
 }
 
-var location;
-var map = new google.maps.Map(document.getElementById("map"));
-map.addListener("click", (mapsMouseEvent) => {
-  location = JSON.stringify(mapsMouseEvent.latLng.toJSON(), null,  2);
-});
-console.log(location);
+// OpenStreetMap
+// Initialize the map
+function initMap() {
+  var map = L.map('map').setView([40.7142, -74], 13);
+
+  // Add the OpenStreetMap tile layer
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data © OpenStreetMap contributors',
+    maxZoom: 20,
+    minZoom: 12
+  }).addTo(map);
+}
+
+// Call the initMap function when the page has loaded
+window.onload = function() {
+  initMap();
+};
