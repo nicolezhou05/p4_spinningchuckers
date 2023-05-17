@@ -12,6 +12,7 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
+    opacity: 0.9;
 }
 
 .navbar a {
@@ -26,6 +27,10 @@ body {
 .navbar a:hover {
     background-color: #ddd;
     color: black;
+}
+
+.navbar .active {
+    background-color: darkslategray;
 }
 
 #main {
