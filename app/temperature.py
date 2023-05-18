@@ -1,29 +1,29 @@
 import sqlite3
 import csv
-database_file = "nycInfo.db"
+database_file = "nycInfo2.db"
 connection = sqlite3.connect(database_file, check_same_thread=False)
 #create temperature table
 connection.execute("CREATE TABLE IF NOT EXISTS" +
                 " temperature (" +
-                "Sensor.ID TEXT, " +
+                "Sensor_ID TEXT, " +
                 "AirTemp INTEGER, " +
                 "Day TEXT, " +
                 "Hour INTEGER, " +
                 "Latitude FLOAT, " +
                 "Longitude FLOAT, " +
                 "Year TEXT, " +
-                "Install.Type TEXT, " +
+                "Install_Type TEXT, " +
                 "Borough TEXT, " +
                 "ntacode TEXT" +
                 ")")
 print("temperature table created")
 connection.commit()
 def create_temperature(cursor, data):
-    query = "INSERT INTO temperature (Sensor.ID, AirTemp, Day, Hour, Latitude, Longitude, Year, Install.Type, Borough, ntacode) VALUES "
-    TEXT_indices = list(range(1,11))
-    for r in range(len(data)-1):
+    query = "INSERT INTO temperature (Sensor_ID, AirTemp, Day, Hour, Latitude, Longitude, Year, Install_Type, Borough, ntacode) VALUES "
+    TEXT_indices = list(range(10))
+    for r in range(min(len(data)-1,1000)):
         query += "("
-        for c in range(len(data[r])):
+        for c in range(min(len(data[r]),1000)):
             if len(data[r][c]) < 1:
                 query += "NULL" + ", "
             elif c in TEXT_indices:
