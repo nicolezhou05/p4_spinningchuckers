@@ -79,3 +79,13 @@ nicoleZ, huiW, nicholasT -- 2023-05-10
 * Started droplet portion
 * Login and register almost finalized
 ==============================================================
+
+nicoleZ, huiW, nicholasT, jlee -- 2023-05-18
+--------------------------------------------------------------
+* Tour results:
+    - <element onload="myScript"> 
+    - Take data from flask app
+    - Pass it as arguments to html
+    - Inside the html, we call the initialize functions from js on onload
+    - Inside js function we will be able to use that data
+==============================================================
