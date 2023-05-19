@@ -25,7 +25,7 @@ print("health table created")
 connection.commit()
 def create_health(cursor, data):
     query = "INSERT INTO health (Facility, Borough, Facility_Name, Cross_Streets, Phone, Location1, Postcode, Latitude, Longitude, Community_Board, Council_District, Census_Tract, BIN, BBL, NTA) VALUES "
-    TEXT_indices = [0,1,2,3,4,5]
+    TEXT_indices = [0,1,2,3,4,5,6]
     for r in range(len(data)-1):
         query += "("
         for c in range(len(data[r])):
@@ -39,16 +39,28 @@ def create_health(cursor, data):
                 query += data[r][c] + ", "
         query = query[:len(query)-2] + "),"
     query = query[:len(query)-2] + ");"
-    print(query)
+    # print(query)
     cursor.execute(query)
     cursor.connection.commit()
 
 with open("health.csv", "r") as file:
     dataList = file.read().split("\n")
-    for r in range(len(dataList)):
-        dataList[r] = dataList[r].split(",")
+    newData = []
+    for i in range(len(dataList)-2):
+        temp = dataList[i] + dataList[i+1] + dataList[i+2]
+        newData.append(temp)
+        i += 2
+    # for r in range(len(newData)):
+    #     newData[r] = newData[r].split(",")
+    #     for c in range(len(newData[r])):
+    #         if c == 6:
+    #             newData[r][c] = newData[r][c].split("(")
+    #         if c == 8:
+    #             newData[r][c] = newData[r][c][:-2]
 
-    create_health(cursor=connection.cursor(), data=dataList[1:])
+    print(newData)
+
+    create_health(cursor=connection.cursor(), data=newData[1:])
 '''
 with open("View_of_NYC_Health___Hospitals_patient_care_locations___2011__Map_.csv", "r") as file:
     dataList = file.read().split("\n")
