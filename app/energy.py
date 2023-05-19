@@ -1,6 +1,6 @@
 import sqlite3
 import csv
-database_file = "nycInfo3.db"
+database_file = "nycInfo.db"
 connection = sqlite3.connect(database_file, check_same_thread=False)
 #create energy table
 connection.execute("CREATE TABLE IF NOT EXISTS" +
