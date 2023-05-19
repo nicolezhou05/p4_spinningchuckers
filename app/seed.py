@@ -42,7 +42,6 @@ def create_transportation(cursor, data):
                 query += data[r][c] + ", "
         query = query[:len(query)-2] + "),"
     query = query[:len(query)-2] + ");"
-    print(query)
     cursor.execute(query)
     cursor.connection.commit()
 """
