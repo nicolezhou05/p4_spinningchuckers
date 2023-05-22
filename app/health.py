@@ -24,9 +24,9 @@ connection.execute("CREATE TABLE IF NOT EXISTS" +
 print("health table created")
 connection.commit()
 def create_health(cursor, data):
-    query = "INSERT INTO health (Facility, Borough, Facility_Name, Cross_Streets, Phone, Location1, Postcode, Latitude, Longitude, Community_Board, Council_District, Census_Tract, BIN, BBL, NTA) VALUES "
+    query = "INSERT INTO health (Facility_Type, Borough, Facility_Name, Cross_Streets, Phone, Location1, Postcode, Latitude, Longitude, Community_Board, Council_District, Census_Tract, BIN, BBL, NTA) VALUES "
     TEXT_indices = [0,1,2,3,4,5,6,14]
-    for r in range(len(data)-1):
+    for r in range(len(data)):
         query += "("
         for c in range(len(data[r])):
             if len(data[r][c]) < 1:
@@ -45,7 +45,7 @@ with open("health.csv", "r") as file:
     dataList = file.read().split("\n")
     newData = []
     i = 1
-    while i in range(1,len(dataList)-3):
+    while i in range(len(dataList)-3):
         dataList[i+1] = dataList[i+1].replace(",", "")
         dataList[i+2] = dataList[i+2].replace(";","").replace("("," ").replace(")","").strip(" ")
         temp = dataList[i] + dataList[i+1] + dataList[i+2]

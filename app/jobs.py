@@ -15,8 +15,8 @@ connection.execute("CREATE TABLE IF NOT EXISTS" +
                 "level TEXT, " +
                 "job_category TEXT, " +
                 "full_part_time_indicator TEXT, " +
-                "salary_range_from INTEGER, " +
-                "salary_range_to INTEGER, " +
+                "salary_range_from FLOAT, " +
+                "salary_range_to FLOAT, " +
                 "salary_freq TEXT, " +
                 "work_location TEXT, " +
                 "division_work_unit TEXT, " +
@@ -38,7 +38,7 @@ print("jobs table created")
 connection.commit()
 def create_jobs(cursor, data):
     query = "INSERT INTO jobs (agency, posting_type, num_of_positions, business_title, civic_service_title, title_code_no, level, job_category, full_part_time_indicator, salary_range_from, salary_range_to, salary_freq, work_location, division_work_unit, job_description, minimum_qual_reqs, pref_skills, additional_info, to_apply, hours_shift, work_location1, recruitment_contact, residency_req, posting_date, post_until, posting_updated, process_date) VALUES "
-    TEXT_indices = list(range(1,8))
+    TEXT_indices = [1, 2, 4, 5, 7, 8, 9, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
     for r in range(len(data)-1):
         query += "("
         for c in range(len(data[r])):
