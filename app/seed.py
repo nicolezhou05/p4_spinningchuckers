@@ -52,6 +52,7 @@ with open("Overhead_Electronic_Signs.csv", "r") as file:
 
     create_transportation(cursor=connection.cursor(), data=dataList[1:])
 """
+"""
 #create crime table
 connection.execute("CREATE TABLE IF NOT EXISTS" +
                 " crime (" +
@@ -89,7 +90,7 @@ with open("US_Crime_Data.csv", "r") as file:
         dataList[r] = dataList[r].split(",")
 
     create_crime(cursor=connection.cursor(), data=dataList[1:])
-
+"""
 # #create buildings table
 connection.execute("CREATE TABLE IF NOT EXISTS" +
                 " buildings (" +
