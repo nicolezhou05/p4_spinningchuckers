@@ -11,8 +11,7 @@ connection.execute("CREATE TABLE IF NOT EXISTS" +
                 "Latitude FLOAT, " +
                 "Longitude FLOAT, " +
                 "Year TEXT, " +
-                "Install_Type TEXT, " +
-                "Borough TEXT" +
+                "Install_Type TEXT" +
                 ")")
 print("temperature table created")
 connection.commit()
