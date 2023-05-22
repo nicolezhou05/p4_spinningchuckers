@@ -48,3 +48,9 @@ function clearMarkers() {
 }
 
 map.on('click', onMapClick);
+
+function initialize(temperature) {
+  console.log(temperature);
+  // var temp = Object(temperature);
+  // console.log(temp);
+}

@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
-<body>
+<body onload="initialize({{ temperature }})">
     <div class="navbar">
         <a href="#home" class="navtab active">Home</a>
         <a href="#weather" class="navtab">Weather</a>
@@ -16,7 +16,6 @@
         <a href="#energy" class="navtab">Energy</a>
         <a href="#buildings" class="navtab">Buildings</a>
         <a href="#transportation" class="navtab">Transportation</a>
-        <a href="#crime" class="navtab">Crime</a>
         <a href="#jobs" class="navtab">Jobs</a>
     </div>
     <div id="main">
@@ -28,7 +27,6 @@
             <div id="energy" class="tab hidden">energy</div>
             <div id="buildings" class="tab hidden">buildings</div>
             <div id="transportation" class="tab hidden">transportation</div>
-            <div id="crime" class="tab hidden">crime</div>
             <div id="jobs" class="tab hidden">jobs</div>
         </div>
     </div>
