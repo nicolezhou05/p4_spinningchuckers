@@ -3,13 +3,15 @@ from login import user_exist, create_user, confirm, get_pswd, correct_login
 app = Flask(__name__)
 import sqlite3
 
+SECRET_KEY = "spinningchuckerswoah"
 # connect to db
-conn = sqlite3.connect('app/nycInfo.db')
-cursor = conn.cursor()
-cursor.execute('SELECT * from temperature')
-temperature = cursor.fetchall()
-cursor.close()
-conn.close()
+
+# conn = sqlite3.connect('app/nycInfo.db')
+# cursor = conn.cursor()
+# cursor.execute('SELECT * from temperature')
+# temperature = cursor.fetchall()
+# cursor.close()
+# conn.close()
 
 # home page
 @app.route("/home")
@@ -54,7 +56,7 @@ def register():
         # if not, user stays on the register page
         else:
             return render_template('register.html',message="Passwords do not match.")
-    return render_template("login.html", message="An error occured")
+    #return render_template("login.html", message="An error occured")
 
 
 # @app.route("/logout", methods = ["POST"])
