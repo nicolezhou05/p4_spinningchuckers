@@ -3,18 +3,18 @@ from login import user_exist, create_user, confirm, get_pswd, correct_login
 app = Flask(__name__)
 import sqlite3
 
-SECRET_KEY = "spinningchuckerswoah"
+app.secret_key = "spinningchuckerswoah"
 # connect to db
 
-# conn = sqlite3.connect('app/nycInfo.db')
-# cursor = conn.cursor()
-# cursor.execute('SELECT * from temperature')
-# temperature = cursor.fetchall()
-# cursor.close()
-# conn.close()
+conn = sqlite3.connect('nycInfo.db')
+cursor = conn.cursor()
+cursor.execute('SELECT * from temperature')
+temperature = cursor.fetchall()
+cursor.close()
+conn.close()
 
 # home page
-@app.route("/home")
+@app.route("/home", methods = ["POST","GET"])
 def root():
     return render_template('index.html', temperature = temperature)
 
