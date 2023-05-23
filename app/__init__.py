@@ -6,7 +6,7 @@ import sqlite3
 app.secret_key = "spinningchuckerswoah"
 # connect to db
 
-conn = sqlite3.connect('nycInfo.db')
+conn = sqlite3.connect('app/nycInfo.db')
 cursor = conn.cursor()
 cursor.execute('SELECT * from temperature')
 temperature = cursor.fetchall()
