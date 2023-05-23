@@ -6,10 +6,32 @@ import sqlite3
 app.secret_key = "spinningchuckerswoah"
 # connect to db
 
-conn = sqlite3.connect('nycInfo.db')
+conn = sqlite3.connect('app/nycInfo.db')
 cursor = conn.cursor()
+# select from temperature table
 cursor.execute('SELECT * from temperature')
 temperature = cursor.fetchall()
+temperature = [list(x) for x in temperature]
+# select from health table
+cursor.execute('SELECT * from temperature')
+temperature = cursor.fetchall()
+temperature = [list(x) for x in temperature]
+# select from energy table
+cursor.execute('SELECT * from temperature')
+temperature = cursor.fetchall()
+temperature = [list(x) for x in temperature]
+# select from buildings table
+cursor.execute('SELECT * from temperature')
+temperature = cursor.fetchall()
+temperature = [list(x) for x in buildings]
+# select from transportation table
+cursor.execute('SELECT * from transportation')
+transportation = cursor.fetchall()
+transportation = [list(x) for x in transportation]
+# select from jobs table
+cursor.execute('SELECT * from jobs')
+jobs = cursor.fetchall()
+jobs = [list(x) for x in jobs]
 cursor.close()
 conn.close()
 
