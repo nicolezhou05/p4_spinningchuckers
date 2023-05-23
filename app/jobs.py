@@ -58,7 +58,7 @@ def create_jobs(cursor, data):
 with open("nyc-jobs.csv", "r", encoding="utf-8") as file:
     dataList = file.read().split("\n")
     for i in range(len(dataList)):
-        dataList[i] = dataList[i][:200].replace(", ","; ") + dataList[i][200:-96].replace(", ","; ").replace(",1","1").replace(",2","2").replace(",3","3").replace(",4","4").replace(",5","5").replace(",6","6").replace(",7","7").replace(",8","8").replace(",9","9").replace(",0","0") + dataList[i][-96:]
+        dataList[i] = dataList[i][:300].replace(", ","; ") + dataList[i][300:-96].replace(", ","; ").replace(",1","1").replace(",2","2").replace(",3","3").replace(",4","4").replace(",5","5").replace(",6","6").replace(",7","7").replace(",8","8").replace(",9","9").replace(",0","0") + dataList[i][-96:]
 
     for r in range(len(dataList)):
         dataList[r] = dataList[r].split(",")

@@ -1,6 +1,6 @@
 import sqlite3
 import csv
-database_file = "nycInfo.db"
+database_file = "nycInfo2.db"
 connection = sqlite3.connect(database_file, check_same_thread=False)
 #create health table
 connection.execute("CREATE TABLE IF NOT EXISTS" +
@@ -32,7 +32,7 @@ def create_health(cursor, data):
             if len(data[r][c]) < 1:
                 query += "NULL" + ", "
             elif c in TEXT_indices:
-                query += "'" + data[r][c] + "', "
+                query += '"' + data[r][c] + '", '
             else:
                 query += data[r][c] + ", "
         query = query[:len(query)-2] + "),"
@@ -42,11 +42,11 @@ def create_health(cursor, data):
     cursor.connection.commit()
 
 with open("health.csv", "r") as file:
-    dataList = file.read().split("\n")
+    dataList = file.read().replace(", "," ").split("\n")
     newData = []
     i = 1
     while i in range(len(dataList)-3):
-        dataList[i+1] = dataList[i+1].replace(",", "")
+        dataList[i+1] = dataList[i+1].replace(", ", " ")
         dataList[i+2] = dataList[i+2].replace(";","").replace("("," ").replace(")","").strip(" ")
         temp = dataList[i] + dataList[i+1] + dataList[i+2]
         newData.append(temp)
