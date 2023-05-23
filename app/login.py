@@ -4,7 +4,7 @@ import sqlite3
 
 DB_FILE = "user.ub"
 
-db = sqlite3.connect(DB_FILE)
+db = sqlite3.connect(DB_FILE, check_same_thread=False)
 c = db.cursor()
 
 c.execute("CREATE TABLE IF NOT EXISTS users(name TEXT, pass TEXT)")
@@ -29,7 +29,8 @@ def create_user(username, password):
     if user_exist(username):
         return False
     # create user
-    c.execute("INSERT INTO users VALUES(?,?)", (username, password))
+    else:
+        c.execute("INSERT INTO users VALUES(?,?)", (username, password))
     db.commit()
     return True
 
