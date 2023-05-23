@@ -1,11 +1,20 @@
 from flask import Flask, render_template, request, session, redirect
 from login import user_exist, create_user, confirm, get_pswd, correct_login
 app = Flask(__name__)
+import sqlite3
+
+# connect to db
+conn = sqlite3.connect('app/nycInfo.db')
+cursor = conn.cursor()
+cursor.execute('SELECT * from temperature')
+temperature = cursor.fetchall()
+cursor.close()
+conn.close()
 
 # home page
 @app.route("/home")
 def root():
-    return render_template('index.html')
+    return render_template('index.html', temperature = temperature)
 
 @app.route("/", methods = ["POST","GET"])
 def log():
@@ -48,10 +57,10 @@ def register():
     return render_template("login.html", message="An error occured")
 
 
-@app.route("/logout", methods = ["POST"])
-def logout():
-    session.pop('username', None)
-    return redirect("/")
+# @app.route("/logout", methods = ["POST"])
+# def logout():
+#     session.pop('username', None)
+#     return redirect("/")
 
 if __name__ == "__main__":
     app.debug = True

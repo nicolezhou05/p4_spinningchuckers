@@ -47,4 +47,13 @@ function clearMarkers() {
   markers = [];
 }
 
+addMarker(40.7128, -74.0060);
+
 map.on('click', onMapClick);
+
+function initialize(temperature) {
+  for (var i = 0; i < temperature.length; i++) {
+    var row = temperature[i];
+    console.log(row);
+  }
+}
