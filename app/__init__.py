@@ -50,6 +50,8 @@ def register():
             if create_user(username, password):
                 session["username"] = username
                 return redirect("/home")
+            elif user_exist(username):
+                return render_template('register.html', message="Account creation failed. Username exists.")
             # if not, returns a message to tell the user to retry
             else:
                 return render_template('register.html', message="Account creation failed. Please try again.")
