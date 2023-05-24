@@ -82,10 +82,10 @@ def register():
             return render_template('register.html',message="Passwords do not match.")
     #return render_template("login.html", message="An error occured")
 
-# @app.route("/logout", methods = ["POST"])
-# def logout():
-#     session.pop('username', None)
-#     return redirect("/")
+@app.route("/logout", methods = ["POST","GET"])
+def logout():
+    session.pop('username', None)
+    return redirect("/")
 
 if __name__ == "__main__":
     app.debug = True

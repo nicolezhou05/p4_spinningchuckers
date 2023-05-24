@@ -2,7 +2,7 @@ body {
     background-image: url("https://4kwallpapers.com/images/wallpapers/new-york-city-skyline-panorama-sunset-skyscrapers-3840x2160-4645.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;
 }
 
 .navbar {
@@ -61,4 +61,25 @@ body {
 
 .hidden {
     display: none;
+}
+
+.signoff {
+  float: left;
+  display: block;
+}
+
+.logoutbtn {
+  background-color: inherit;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  margin: 0;
+}
+
+.logoutbtn:hover {
+  background-color: #ddd;
+  color: black;
 }
