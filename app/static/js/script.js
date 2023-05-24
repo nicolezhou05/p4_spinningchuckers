@@ -2,6 +2,16 @@ var navbar = document.querySelector('.navbar');
 var links = navbar.querySelectorAll('.navtab');
 var tabs = document.querySelectorAll(".tab");
 
+var temperature, health, energy, buildings, transportation, jobs;
+function initialize(tem, hea, ene, bui, tra, job) {
+  temperature = JSON.stringify(tem);
+  health = JSON.stringify(hea);
+  energy = JSON.stringify(ene);
+  buildings = JSON.stringify(bui);
+  transportation = JSON.stringify(tra);
+  jobs = JSON.stringify(job);
+}
+
 for (var i = 0; i < links.length; i++) {
   links[i].addEventListener('click', function() {
     for (var j = 0; j < links.length; j++) {
@@ -50,8 +60,3 @@ function clearMarkers() {
 addMarker(40.7128, -74.0060);
 
 map.on('click', onMapClick);
-
-function initialize(temperature) {
-  console.log(temperature);
-  var data = JSON.stringify(temperature);
-}
