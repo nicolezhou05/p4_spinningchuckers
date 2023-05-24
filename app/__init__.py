@@ -16,6 +16,7 @@ temperature = [list(x) for x in temperature]
 cursor.execute('SELECT * from health')
 health = cursor.fetchall()
 health = [list(x) for x in health]
+# print(health)
 # select from energy table
 cursor.execute('SELECT * from energy')
 energy = cursor.fetchall()

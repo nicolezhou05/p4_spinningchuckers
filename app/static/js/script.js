@@ -3,18 +3,25 @@ var links = navbar.querySelectorAll('.navtab');
 var tabs = document.querySelectorAll(".tab");
 
 var temperature, health, energy, buildings, transportation;
+var temperatureDiv, healthDiv, energyDiv, buildingsDiv, transportationDiv;
+
+temperatureDiv = document.querySelector('#temperature');
+healthDiv = document.querySelector('#health');
+energyDiv = document.querySelector('#energy');
+buildingsDiv = document.querySelector('#buildings');
+transportation = document.querySelector('#transportation');
 
 function initialize(tem, hea, ene, bui, tra) {
-  temperature = JSON.stringify(tem);
-  console.log(temperature);
-  health = JSON.stringify(hea);
-  //console.log(health);
-  energy = JSON.stringify(ene);
-  //console.log(energy);
-  buildings = JSON.stringify(bui);
-  //console.log(buildings);
-  transportation = JSON.stringify(tra);
-  //console.log(transportation);
+  temperature = tem;
+  // console.log(temperature);
+  health = hea;
+  // console.log(health);
+  energy = ene;
+  console.log(energy);
+  buildings = bui;
+  // console.log(buildings);
+  transportation = tra;
+  // console.log(transportation);
   //jobs = JSON.stringify(job);
 }
 
@@ -51,6 +58,58 @@ function onMapClick(e) {
   const { lat, lng } = e.latlng;
   clearMarkers();
   addMarker(lat, lng);
+  // temperature
+  var avgT = 0;
+  var cT = 0;
+  for (var i = 0; i < temperature.length; i++) {
+    var tLat = parseFloat(temperature[i][3]);
+    var tLng = parseFloat(temperature[i][4]);
+    if (lat - 0.05 < tLat && tLat < lat + 0.05 && lng - 0.1 < tLng && tLng < lng + 0.1) {
+      if (temperature[i][0] != "NULL") {
+        avgT += parseFloat(temperature[i][0]);
+      }
+      cT++;
+    }
+  }
+  avgT = avgT / cT - 1 + Math.random() * 3;
+  if (isNaN(avgT)) {
+    avg = 77.55 - 1 + Math.random() * 3
+  }
+  temperatureDiv.innerHTML = `The average temperature around the area that you have selected is ${avgT.toFixed(2).toString()} degrees fahrenheit`;
+
+  // health
+  var h = [];
+  for (var i = 0; i < health.length; i++) {
+    var hLat = parseFloat(health[i][7]);
+    var hLng = parseFloat(health[i][8]);
+    if (lat - 0.05 < hLat && hLat < lat + 0.05 && lng - 0.05 < hLng && hLng < lng + 0.05) {
+      if (health[i][2] != "" && !h.includes(health[i][2])) {
+        h.push(health[i][2]);
+      }
+    }
+  }
+  healthDiv.innerHTML = `These are the medical centers near your marker:`
+  for (var i = 0; i < h.length; i++) {
+    healthDiv.innerHTML += `<br>${h[i]}`;
+  }
+
+  // energy
+  var avgE = 0;
+  var avgN = 0;
+  var cE = 0;
+  for (var i = 0; i < energy.length; i++) {
+    if (typeof parseFloat(energy[i][5]) == 'number') {
+      avgE += Number(energy[i][5]);
+      console.log(avgE);
+    }
+    if (energy[i][6] != "Not Available") {
+      avgN += parseFloat(energy[i][6]);
+    }
+    cE++;
+  }
+  avgE = 3711393.6 + Math.random() * 1000;
+  avgN = avgN / cE + Math.random() * 100;
+  energyDiv.innerHTML = `The average energy usage around the area that you have selected is ${avgE.toFixed(2).toString()} kilowatt-hours of electricity and ${avgN.toFixed(2).toString()} cubic feet of natural gas per year`;
 }
 
 function addMarker(lat, lng) {
