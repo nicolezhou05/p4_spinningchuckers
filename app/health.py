@@ -11,30 +11,24 @@ connection.execute("CREATE TABLE IF NOT EXISTS" +
                 "Cross_Streets TEXT, " +
                 "Phone TEXT, " +
                 "Location1 TEXT, " +
-                "Postcode INTEGER, " +
-                "Latitude FLOAT, " +
-                "Longitude FLOAT, " +
-                "Community_Board INTEGER, " +
-                "Council_District INTEGER, " +
-                "Census_Tract INTEGER, " +
-                "BIN INTEGER, " +
-                "BBL INTEGER, " +
+                "Postcode TEXT, " +
+                "Latitude TEXT, " +
+                "Longitude TEXT, " +
+                "Community_Board TEXT, " +
+                "Council_District TEXT, " +
+                "Census_Tract TEXT, " +
+                "BIN TEXT, " +
+                "BBL TEXT, " +
                 "NTA TEXT" +
                 ")")
 print("health table created")
 connection.commit()
 def create_health(cursor, data):
     query = "INSERT INTO health (Facility_Type, Borough, Facility_Name, Cross_Streets, Phone, Location1, Postcode, Latitude, Longitude, Community_Board, Council_District, Census_Tract, BIN, BBL, NTA) VALUES "
-    TEXT_indices = [0,1,2,3,4,5,6,14]
     for r in range(len(data)):
         query += "("
         for c in range(len(data[r])):
-            if len(data[r][c]) < 1:
-                query += "NULL" + ", "
-            elif c in TEXT_indices:
-                query += '"' + data[r][c] + '", '
-            else:
-                query += data[r][c] + ", "
+            query += '"' + data[r][c] + '", '
         query = query[:len(query)-2] + "),"
     query = query[:len(query)-2] + ");"
     print(query)
