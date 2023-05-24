@@ -35,7 +35,7 @@ def create_transportation(cursor, data):
         query += "("
         for c in range(len(data[r])):
             if len(data[r][c]) < 1:
-                query += "NULL" + ", "
+                query += "'NULL'" + ", "
             elif c in TEXT_indices:
                 query += "'" + data[r][c] + "', "
             else:

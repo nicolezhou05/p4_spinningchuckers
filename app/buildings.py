@@ -23,7 +23,7 @@ def create_buildings(cursor, data):
         query += "("
         for c in range(len(data[r])):
             if len(data[r][c]) < 1 and c in TEXT_indices:
-                query += "NULL" + ", "
+                query += "'NULL'" + ", "
             elif c in TEXT_indices:
                 query += "'" + data[r][c] + "', "
             #else:

@@ -2,20 +2,20 @@ var navbar = document.querySelector('.navbar');
 var links = navbar.querySelectorAll('.navtab');
 var tabs = document.querySelectorAll(".tab");
 
-var temperature, health, energy, buildings, transportation, jobs;
+var temperature, health, energy, buildings, transportation;
 
-function initialize(tem, hea, ene, bui, tra, job) {
+function initialize(tem, hea, ene, bui, tra) {
   temperature = JSON.stringify(tem);
   console.log(temperature);
   health = JSON.stringify(hea);
-  console.log(health);
+  //console.log(health);
   energy = JSON.stringify(ene);
-  console.log(energy);
+  //console.log(energy);
   buildings = JSON.stringify(bui);
-  console.log(buildings);
+  //console.log(buildings);
   transportation = JSON.stringify(tra);
-  console.log(transportation);
-  jobs = JSON.stringify(job);
+  //console.log(transportation);
+  //jobs = JSON.stringify(job);
 }
 
 for (var i = 0; i < links.length; i++) {
