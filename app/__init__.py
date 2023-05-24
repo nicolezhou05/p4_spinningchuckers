@@ -29,9 +29,9 @@ cursor.execute('SELECT * from transportation')
 transportation = cursor.fetchall()
 transportation = [list(x) for x in transportation]
 # select from jobs table
-cursor.execute('SELECT * from jobs')
-jobs = cursor.fetchall()
-jobs = [list(x) for x in jobs]
+#cursor.execute('SELECT * from jobs')
+#jobs = cursor.fetchall()
+#jobs = [list(x) for x in jobs]
 cursor.close()
 conn.close()
 
