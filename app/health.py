@@ -1,6 +1,6 @@
 import sqlite3
 import csv
-database_file = "nycInfo2.db"
+database_file = "nycInfo.db"
 connection = sqlite3.connect(database_file, check_same_thread=False)
 #create health table
 connection.execute("CREATE TABLE IF NOT EXISTS" +
