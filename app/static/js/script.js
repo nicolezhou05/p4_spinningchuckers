@@ -3,6 +3,7 @@ var links = navbar.querySelectorAll('.navtab');
 var tabs = document.querySelectorAll(".tab");
 
 var temperature, health, energy, buildings, transportation, jobs;
+
 function initialize(tem, hea, ene, bui, tra, job) {
   temperature = JSON.stringify(tem);
   health = JSON.stringify(hea);
