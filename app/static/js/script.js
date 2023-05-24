@@ -9,7 +9,7 @@ temperatureDiv = document.querySelector('#temperature');
 healthDiv = document.querySelector('#health');
 energyDiv = document.querySelector('#energy');
 buildingsDiv = document.querySelector('#buildings');
-transportation = document.querySelector('#transportation');
+transportationDiv = document.querySelector('#transportation');
 
 function initialize(tem, hea, ene, bui, tra) {
   temperature = tem;
@@ -100,7 +100,7 @@ function onMapClick(e) {
   for (var i = 0; i < energy.length; i++) {
     if (typeof parseFloat(energy[i][5]) == 'number') {
       avgE += Number(energy[i][5]);
-      console.log(avgE);
+      //console.log(avgE);
     }
     if (energy[i][6] != "Not Available") {
       avgN += parseFloat(energy[i][6]);
@@ -110,7 +110,42 @@ function onMapClick(e) {
   avgE = 3711393.6 + Math.random() * 1000;
   avgN = avgN / cE + Math.random() * 100;
   energyDiv.innerHTML = `The average energy usage around the area that you have selected is ${avgE.toFixed(2).toString()} kilowatt-hours of electricity and ${avgN.toFixed(2).toString()} cubic feet of natural gas per year`;
+
+  // buildings
+  var b = [];
+  var avgS = 0;
+  var bE=0;
+  for (var i = 0; i < buildings.length; i++) {
+    var bLat = parseFloat(buildings[i][6]);
+    var bLng = parseFloat(buildings[i][7]);
+    if (typeof parseFloat(bLat) == 'number' && typeof parseFloat(bLng) == 'number' && typeof parseFloat(buildings[i][5]) == 'number') {
+      if (lat - 0.05 < bLat && bLat < lat + 0.05 && lng - 0.05 < bLng && bLng < lng + 0.05) {
+        avgS+= parseFloat(buildings[i][5]);
+        bE++;
+      }
+    }
+  }
+  avgS/=bE;
+  buildingsDiv.innerHTML = `The average building size around the area that you have selected is ${avgS.toFixed(2).toString()} square feet`;
+
+  // transportation
+  var message = "";
+  for (var i = 0; i < transportation.length; i++) {
+    var dLat = parseFloat(transportation[i][16]);
+    var dLng = parseFloat(transportation[i][17]);
+    if (typeof parseFloat(dLat) == 'number' && typeof parseFloat(dLng) == 'number') {
+      if (lat - 0.05 < dLat && dLat < lat + 0.05 && lng - 0.05 < dLng && dLng < lng + 0.05) {
+        message = transportation[i][2];
+        break;
+      }
+    }
+  }
+  console.log(message);
+  transportationDiv.innerHTML = `The direction of the traffic around the area that you have selected is ${message}`;
+
 }
+
+
 
 function addMarker(lat, lng) {
   const marker = L.marker([lat, lng]).addTo(map);
