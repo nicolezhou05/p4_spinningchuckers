@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request, session, redirect
 from login import user_exist, create_user, confirm, get_pswd, correct_login
-app = Flask(__name__)
 import sqlite3
 
+app = Flask(__name__)
 app.secret_key = "spinningchuckerswoah"
-# connect to db
 
+# connect to db
 conn = sqlite3.connect('nycInfo.db')
 cursor = conn.cursor()
 # select from temperature table
@@ -13,17 +13,17 @@ cursor.execute('SELECT * from temperature')
 temperature = cursor.fetchall()
 temperature = [list(x) for x in temperature]
 # select from health table
-cursor.execute('SELECT * from temperature')
-temperature = cursor.fetchall()
-temperature = [list(x) for x in temperature]
+cursor.execute('SELECT * from health')
+health = cursor.fetchall()
+health = [list(x) for x in health]
 # select from energy table
-cursor.execute('SELECT * from temperature')
-temperature = cursor.fetchall()
-temperature = [list(x) for x in temperature]
+cursor.execute('SELECT * from energy')
+energy = cursor.fetchall()
+energy = [list(x) for x in energy]
 # select from buildings table
-cursor.execute('SELECT * from temperature')
-temperature = cursor.fetchall()
-temperature = [list(x) for x in buildings]
+cursor.execute('SELECT * from buildings')
+buildings = cursor.fetchall()
+buildings = [list(x) for x in buildings]
 # select from transportation table
 cursor.execute('SELECT * from transportation')
 transportation = cursor.fetchall()
@@ -81,7 +81,6 @@ def register():
         else:
             return render_template('register.html',message="Passwords do not match.")
     #return render_template("login.html", message="An error occured")
-
 
 # @app.route("/logout", methods = ["POST"])
 # def logout():
