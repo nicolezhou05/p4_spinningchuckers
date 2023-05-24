@@ -6,10 +6,15 @@ var temperature, health, energy, buildings, transportation, jobs;
 
 function initialize(tem, hea, ene, bui, tra, job) {
   temperature = JSON.stringify(tem);
+  console.log(temperature);
   health = JSON.stringify(hea);
+  console.log(health);
   energy = JSON.stringify(ene);
+  console.log(energy);
   buildings = JSON.stringify(bui);
+  console.log(buildings);
   transportation = JSON.stringify(tra);
+  console.log(transportation);
   jobs = JSON.stringify(job);
 }
 
