@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.secret_key = "spinningchuckerswoah"
 
 # connect to db
-conn = sqlite3.connect('nycInfo.db')
+conn = sqlite3.connect('app/nycInfo.db')
 cursor = conn.cursor()
 # select from temperature table
 cursor.execute('SELECT * from temperature')
@@ -38,7 +38,7 @@ conn.close()
 # home page
 @app.route("/home", methods = ["POST","GET"])
 def root():
-    return render_template('index.html', temperature = temperature)
+    return render_template('index.html', temperature = temperature, health = health, energy = energy, buildings = buildings, transportation = transportation)
 
 @app.route("/", methods = ["POST","GET"])
 def log():
