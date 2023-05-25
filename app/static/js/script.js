@@ -10,6 +10,7 @@ healthDiv = document.querySelector('#health');
 energyDiv = document.querySelector('#energy');
 buildingsDiv = document.querySelector('#buildings');
 transportationDiv = document.querySelector('#transportation');
+infoDiv = document.querySelector('#info');
 
 function initialize(tem, hea, ene, bui, tra) {
   temperature = tem;
@@ -58,13 +59,14 @@ function onMapClick(e) {
   const { lat, lng } = e.latlng;
   clearMarkers();
   addMarker(lat, lng);
+  infoDiv.innerHTML = "Welcome to New York City! This site will help you explore everything that NYC has to offer and tell you information about the Big Apple.<br><br>Click around to find out more about the area that you have clicked!<hr>";
   // temperature
   var avgT = 0;
   var cT = 0;
   for (var i = 0; i < temperature.length; i++) {
     var tLat = parseFloat(temperature[i][3]);
     var tLng = parseFloat(temperature[i][4]);
-    if (lat - 0.05 < tLat && tLat < lat + 0.05 && lng - 0.1 < tLng && tLng < lng + 0.1) {
+    if (lat - 0.05 < tLat && tLat < lat + 0.05 && lng - 0.05 < tLng && tLng < lng + 0.05) {
       if (temperature[i][0] != "NULL") {
         avgT += parseFloat(temperature[i][0]);
       }
@@ -76,29 +78,37 @@ function onMapClick(e) {
     avgT = 77.55 - 1 + Math.random() * 3
   }
   temperatureDiv.innerHTML = `The average temperature around the area that you have selected is ${avgT.toFixed(2).toString()} degrees fahrenheit`;
+  infoDiv.innerHTML += `The average temperature around the area that you have selected is ${avgT.toFixed(2).toString()} degrees fahrenheit.<hr>`;
 
   // health
   var h = [];
+  var phone = [];
+  var loc = [];
   for (var i = 0; i < health.length; i++) {
     var hLat = parseFloat(health[i][7]);
     var hLng = parseFloat(health[i][8]);
     if (lat - 0.05 < hLat && hLat < lat + 0.05 && lng - 0.05 < hLng && hLng < lng + 0.05) {
       if (health[i][2] != "" && !h.includes(health[i][2])) {
         h.push(health[i][2]);
+        phone.push(health[i][4]);
+        loc.push(health[i][5]);
       }
     }
   }
   healthDiv.innerHTML = `These are the medical centers near your marker:`
+  infoDiv.innerHTML += `These are the medical centers near your marker:<br>`
   for (var i = 0; i < h.length; i++) {
-    healthDiv.innerHTML += `<br>${h[i]}`;
+    healthDiv.innerHTML += `<br>${h[i]}<br>${phone[i]}<hr>`;
+    infoDiv.innerHTML += `${h[i]}<br>${phone[i]}<br>`;
   }
+  infoDiv.innerHTML += `<hr>`
 
   // energy
   var avgE = 0;
   var avgN = 0;
   var cE = 0;
   for (var i = 0; i < energy.length; i++) {
-    if (typeof parseFloat(energy[i][5]) == 'number') {
+    if (!isNaN(parseFloat(energy[i][5]))) {
       avgE += Number(energy[i][5]);
       //console.log(avgE);
     }
@@ -107,9 +117,10 @@ function onMapClick(e) {
     }
     cE++;
   }
-  avgE = 3711393.6 + Math.random() * 1000;
-  avgN = avgN / cE + Math.random() * 100;
+  avgE = avgE / cE;
+  avgN = avgN / cE;
   energyDiv.innerHTML = `The average energy usage around the area that you have selected is ${avgE.toFixed(2).toString()} kilowatt-hours of electricity and ${avgN.toFixed(2).toString()} cubic feet of natural gas per year`;
+  infoDiv.innerHTML += `The average energy usage around the area that you have selected is ${avgE.toFixed(2).toString()} kilowatt-hours of electricity and ${avgN.toFixed(2).toString()} cubic feet of natural gas per year.<hr>`;
 
   // buildings
   var b = [];
@@ -129,6 +140,7 @@ function onMapClick(e) {
   }
   avgS/=bE;
   buildingsDiv.innerHTML = `The average building size around the area that you have selected is ${avgS.toFixed(2).toString()} square feet`;
+  infoDiv.innerHTML += `The average building size around the area that you have selected is ${avgS.toFixed(2).toString()} square feet.<hr>`;
 
   // transportation
   var mainRoadway = "";
@@ -147,7 +159,7 @@ function onMapClick(e) {
     }
   }
   transportationDiv.innerHTML = `The main roadway in the area that you have selected is ${mainRoadway}. The direction of the traffic around the area that you have selected is ${direction}.`;
-
+  infoDiv.innerHTML += `The main roadway in the area that you have selected is ${mainRoadway}. The direction of the traffic around the area that you have selected is ${direction}.<hr>`;
 }
 
 

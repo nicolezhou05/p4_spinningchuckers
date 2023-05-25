@@ -10,13 +10,14 @@
 </head>
 <body onload="initialize({{ temperature }}, {{health}}, {{energy}}, {{buildings}}, {{transportation}})">
     <div class="navbar">
-        <a href="#home" class="navtab active">Home</a>
-        <a href="#temperature" class="navtab">Temperature</a>
-        <a href="#health" class="navtab">Health</a>
-        <a href="#energy" class="navtab">Energy</a>
-        <a href="#buildings" class="navtab">Buildings</a>
-        <a href="#transportation" class="navtab">Transportation</a>
+        <!-- <a href="#home" class="navtab active">Home</a> -->
+        <!-- <a href="#temperature" class="navtab">Temperature</a> -->
+        <!-- <a href="#health" class="navtab">Health</a> -->
+        <!-- <a href="#energy" class="navtab">Energy</a> -->
+        <!-- <a href="#buildings" class="navtab">Buildings</a> -->
+        <!-- <a href="#transportation" class="navtab">Transportation</a> -->
         <!-- <a href="#jobs" class="navtab">Jobs</a> -->
+        <a href="#info" class="navtab active">Info</a>
         <div class="navtab signoff">
           <form action="/logout" method="POST">
             <button type="submit" class="logoutbtn">Logout</button>
@@ -26,13 +27,14 @@
     <div id="main">
         <div id="map"></div>
         <div id="tabbar">
-            <div id="home" class="tab">Welcome to New York City! This site will help you explore everything that NYC has to offer and tell you information about the Big Apple.</div>
+            <div id="home" class="tab hidden">Welcome to New York City! This site will help you explore everything that NYC has to offer and tell you information about the Big Apple.</div>
             <div id="temperature" class="tab hidden">Click to see the area temperature around the area clicked!</div>
             <div id="health" class="tab hidden">Click to see the medical centers near the area you choose!</div>
             <div id="energy" class="tab hidden">Click to see the energy usage around the area you choose!</div>
             <div id="buildings" class="tab hidden">buildings</div>
             <div id="transportation" class="tab hidden">transportation</div>
             <div id="jobs" class="tab hidden">jobs</div>
+            <div id="info" class="tab">Welcome to New York City! This site will help you explore everything that NYC has to offer and tell you information about the Big Apple.<br><br>Click around to find out more about the area that you have clicked!</div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
