@@ -17,7 +17,7 @@ function initialize(tem, hea, ene, bui, tra) {
   health = hea;
   // console.log(health);
   energy = ene;
-  console.log(energy);
+  // console.log(energy);
   buildings = bui;
   // console.log(buildings);
   transportation = tra;
@@ -73,7 +73,7 @@ function onMapClick(e) {
   }
   avgT = avgT / cT - 1 + Math.random() * 3;
   if (isNaN(avgT)) {
-    avg = 77.55 - 1 + Math.random() * 3
+    avgT = 77.55 - 1 + Math.random() * 3
   }
   temperatureDiv.innerHTML = `The average temperature around the area that you have selected is ${avgT.toFixed(2).toString()} degrees fahrenheit`;
 
@@ -118,10 +118,12 @@ function onMapClick(e) {
   for (var i = 0; i < buildings.length; i++) {
     var bLat = parseFloat(buildings[i][6]);
     var bLng = parseFloat(buildings[i][7]);
-    if (typeof parseFloat(bLat) == 'number' && typeof parseFloat(bLng) == 'number' && typeof parseFloat(buildings[i][5]) == 'number') {
+
+    if (typeof parseFloat(bLat) == 'number' && typeof parseFloat(bLng) == 'number' && !isNaN(parseFloat(buildings[i][4]))) {
       if (lat - 0.05 < bLat && bLat < lat + 0.05 && lng - 0.05 < bLng && bLng < lng + 0.05) {
-        avgS+= parseFloat(buildings[i][5]);
+        avgS+= parseFloat(buildings[i][4]);
         bE++;
+        console.log(avgS);
       }
     }
   }
@@ -129,19 +131,22 @@ function onMapClick(e) {
   buildingsDiv.innerHTML = `The average building size around the area that you have selected is ${avgS.toFixed(2).toString()} square feet`;
 
   // transportation
-  var message = "";
+  var mainRoadway = "";
+  var direction = "";
+  var borough = "";
   for (var i = 0; i < transportation.length; i++) {
     var dLat = parseFloat(transportation[i][16]);
     var dLng = parseFloat(transportation[i][17]);
     if (typeof parseFloat(dLat) == 'number' && typeof parseFloat(dLng) == 'number') {
-      if (lat - 0.05 < dLat && dLat < lat + 0.05 && lng - 0.05 < dLng && dLng < lng + 0.05) {
-        message = transportation[i][2];
+      if (lat - 0.02 < dLat && dLat < lat + 0.02 && lng - 0.02 < dLng && dLng < lng + 0.02) {
+        mainRoadway = transportation[i][1];
+        direction = transportation[i][2];
+        borough = transportation[i][4];
         break;
       }
     }
   }
-  console.log(message);
-  transportationDiv.innerHTML = `The direction of the traffic around the area that you have selected is ${message}`;
+  transportationDiv.innerHTML = `The main roadway in the area that you have selected is ${mainRoadway}. The direction of the traffic around the area that you have selected is ${direction}.`;
 
 }
 
