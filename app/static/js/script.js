@@ -75,7 +75,7 @@ function onMapClick(e) {
   }
   avgT = avgT / cT - 1 + Math.random() * 3;
   if (isNaN(avgT)) {
-    avgT = 77.55 - 1 + Math.random() * 3
+    avgT = 77.55 - 1 + Math.random() * 3;
   }
   temperatureDiv.innerHTML = `The average temperature around the area that you have selected is ${avgT.toFixed(2).toString()} degrees fahrenheit`;
   infoDiv.innerHTML += `The average temperature around the area that you have selected is ${avgT.toFixed(2).toString()} degrees fahrenheit.<hr>`;
